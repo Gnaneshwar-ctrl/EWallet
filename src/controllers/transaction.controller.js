@@ -4,6 +4,16 @@ const { transactionService } = require('../services');
 
 
 /**
+ * eWallet Deposit
+ * @public
+ */
+const deposit = catchAsync(async (req, res) => {
+  const depositResponse = await transactionService.deposit(req.user, req.body.amount);
+  res.status(httpStatus.ACCEPTED).json(depositResponse);
+});
+
+
+/**
  * eWallet Transfer
  * @public
  */
